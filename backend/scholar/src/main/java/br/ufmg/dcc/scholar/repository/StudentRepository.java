@@ -8,5 +8,8 @@ import br.ufmg.dcc.scholar.domain.Student;
 
 public interface StudentRepository extends PagingAndSortingRepository<Student, Long> {
 	
-	Collection<Student> findByName(String name);
+	Collection<Student> findByFirstName(String firstName);
+
+	Collection<Student> findByLastName(String lastName);
+
 }
