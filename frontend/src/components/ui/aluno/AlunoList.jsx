@@ -7,7 +7,7 @@ import { Cadastrar } from './Cadastrar';
 import DeleteIcon from '@material-ui/icons/Delete';
 
 
-export default class List extends React.Component {
+export default class AlunoList extends React.Component {
   constructor(props) {
     super(props);
     this.state = {

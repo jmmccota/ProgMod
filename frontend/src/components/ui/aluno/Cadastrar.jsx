@@ -1,6 +1,6 @@
 import React from 'react';
 import { Grid, Row, Col } from 'react-flexbox-grid';
-import { CircularProgress, Button, Card, CardContent, CardActions } from '@material-ui/core';
+import { CircularProgress, Button, Card, CardContent, CardActions, CardHeader } from '@material-ui/core';
 import axios from 'axios';
 import { Link, withRouter } from 'react-router-dom';
 import { reduxForm } from 'redux-form';
@@ -33,6 +33,9 @@ class CadastrarComponent extends React.Component {
       <div>
         <form onSubmit={handleSubmit(this.preventEnter)}>
           <Card>
+            <CardHeader
+              title="Cadastro, visualização e alteração de aluno."
+            />
             <CardContent>
               <Grid fluid>
                 <Row>
