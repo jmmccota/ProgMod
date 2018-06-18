@@ -2,7 +2,7 @@ import React from 'react';
 import { Grid, Row, Col } from 'react-flexbox-grid';
 import { CircularProgress, Button, Card, CardContent, CardActions, CardHeader } from '@material-ui/core';
 import axios from 'axios';
-import { Link, withRouter } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import { reduxForm } from 'redux-form';
 import { TextFieldRedux } from '../../config/fields/TextFieldRedux';
 

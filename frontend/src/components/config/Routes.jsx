@@ -1,11 +1,9 @@
 import React from 'react';
 import { Router, Route, Switch } from 'react-router-dom';
 import { Provider } from 'react-redux';
-//import ReactDOM from 'react-dom';
 import { store, customHistory } from './ReduxConfig';
 
 import { Layout } from '../ui/layout/Layout';
-import { Search } from '../ui/search/Search';
 import TheScienceTree from '../ui/Main';
 import NotFound from '../ui/NotFound';
 
