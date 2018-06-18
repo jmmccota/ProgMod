@@ -1,6 +1,6 @@
 import React from 'react';
 import { Field } from 'redux-form';
-import TextField from 'material-ui-next/TextField'
+import TextField from '@material-ui/core/TextField'
 
 class CampoTexto extends React.Component {
   render() {
@@ -13,11 +13,10 @@ class CampoTexto extends React.Component {
     } = this.props;
     return (
       <TextField
-        hintText={label}
+        placeholder={label}
         id={id}
         label={label}
-        floatingLabelText={label}
-        errorText={touched && error}
+        error={touched && error}
         {...input}
         {...custom}
       />

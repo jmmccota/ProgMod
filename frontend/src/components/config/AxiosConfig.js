@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const baseURL = 'http://localhost:48148/api';
+const baseURL = 'http://localhost:8080/';
 
 global.baseUrl = baseURL;
 

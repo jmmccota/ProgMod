@@ -1,15 +1,13 @@
 import React from 'react';
-import Drawer from 'material-ui-next/Drawer';
-import List from 'material-ui-next/List';
-import Divider from 'material-ui-next/Divider';
-import { ListItem, ListItemIcon, ListItemText } from 'material-ui-next/List';
-import InboxIcon from 'material-ui-icons/MoveToInbox';
-import DraftsIcon from 'material-ui-icons/Drafts';
-import StarIcon from 'material-ui-icons/Star';
-import SendIcon from 'material-ui-icons/Send';
-import MailIcon from 'material-ui-icons/Mail';
-import DeleteIcon from 'material-ui-icons/Delete';
-import ReportIcon from 'material-ui-icons/Report';
+import { Link } from 'react-router-dom';
+import { ListItem, ListItemIcon, ListItemText, List, Drawer, Divider } from '@material-ui/core';
+import InboxIcon from '@material-ui/icons/MoveToInbox';
+import DraftsIcon from '@material-ui/icons/Drafts';
+import StarIcon from '@material-ui/icons/Star';
+import SendIcon from '@material-ui/icons/Send';
+import MailIcon from '@material-ui/icons/Mail';
+import DeleteIcon from '@material-ui/icons/Delete';
+import ReportIcon from '@material-ui/icons/Report';
 
 export const Menu = (props) =>
   <Drawer open={props.drawerOpen} onClose={props.handleToggle}>
@@ -21,22 +19,24 @@ export const Menu = (props) =>
     >
       <List>
         <ListItem button>
-          <ListItemIcon>
-            <InboxIcon />
-          </ListItemIcon>
-          <ListItemText primary="Inbox" />
+          <Link to="/professor">
+            <ListItemIcon>
+              <InboxIcon />
+            </ListItemIcon>
+            <ListItemText primary="Professor" />
+          </Link>
         </ListItem>
         <ListItem button>
           <ListItemIcon>
             <StarIcon />
           </ListItemIcon>
-          <ListItemText primary="Starred" />
+          <ListItemText primary="Turma" />
         </ListItem>
         <ListItem button>
           <ListItemIcon>
             <SendIcon />
           </ListItemIcon>
-          <ListItemText primary="Send mail" />
+          <ListItemText primary="Aluno" />
         </ListItem>
         <ListItem button>
           <ListItemIcon>
@@ -57,6 +57,7 @@ export const Menu = (props) =>
           <ListItemIcon>
             <DeleteIcon />
           </ListItemIcon>
+
           <ListItemText primary="Trash" />
         </ListItem>
         <ListItem button>

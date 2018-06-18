@@ -1,11 +1,15 @@
 import React from 'react';
-import { white } from 'material-ui/styles/colors';
-import { withStyles } from 'material-ui-next/styles';
-import AppBar from 'material-ui-next/AppBar';
-import Toolbar from 'material-ui-next/Toolbar';
-import Typography from 'material-ui-next/Typography';
-import IconButton from 'material-ui-next/IconButton';
-import MenuIcon from 'material-ui-icons/Menu';
+/*import { white } from '@material-ui/core/colors';
+import { withStyles } from '@material-ui/core/styles';
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+import Typography from '@material-ui/core/Typography';
+import IconButton from '@material-ui/core/IconButton';
+import { MenuIcon } from '@material-ui/icons/Menu';*/
+import { white } from '@material-ui/core/colors';
+import { withStyles } from '@material-ui/core/styles';
+import Menu from '@material-ui/icons/Menu';
+import { AppBar, Toolbar, IconButton, Typography } from '@material-ui/core';
 
 const styles = theme => ({
   root: {
@@ -35,7 +39,7 @@ function Header(props) {
         <Toolbar>
           {props.iconLeft === true ?
             <IconButton onClick={props.handleToggle} className={classes.menuButton} aria-label="Menu">
-              <MenuIcon color={white} />
+              <Menu color={white} />
             </IconButton> : <div />}
           <Typography type="title" color="inherit" className={classes.flex}>
             {props.title}

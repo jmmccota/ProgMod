@@ -64,7 +64,7 @@ class LayoutComponent extends React.Component {
           <Menu drawerOpen={this.state.drawerOpen} handleToggle={this.handleToggle} />
           <div id="main-content">
             <Header
-              title={'St'}
+              title={'Programação Modular'}
               iconLeft
               handleToggle={this.handleToggle}
             />

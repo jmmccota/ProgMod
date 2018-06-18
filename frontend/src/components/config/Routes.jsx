@@ -6,22 +6,19 @@ import { store, customHistory } from './ReduxConfig';
 
 import { Layout } from '../ui/layout/Layout';
 import { Search } from '../ui/search/Search';
-import TheScienceTree from '../ui/TheScienceTree';
+import TheScienceTree from '../ui/Main';
 import NotFound from '../ui/NotFound';
 
 import injectTapEventPlugin from 'react-tap-event-plugin';
-import MuiThemeProviderOld from 'material-ui/styles/MuiThemeProvider';
-import { MuiThemeProvider } from 'material-ui-next/styles';
-import createMuiTheme from 'material-ui-next/styles/createMuiTheme';
-import getMuiTheme from 'material-ui/styles/getMuiTheme';
+import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 
 import './AxiosConfig';
+import ProfessorList from '../ui/professor/ProfessorList';
 
 injectTapEventPlugin();
 
 const newTheme = createMuiTheme();
-const oldTheme = getMuiTheme();
-global.muiTheme = oldTheme;
+global.muiTheme = newTheme;
 
 const renderLayout = Componente => (props) => {
   const elemento = (<Componente params={props.match.params} {...props} />);
@@ -35,18 +32,16 @@ const renderLayout = Componente => (props) => {
 const Routes = () => (
   <Provider store={store}>
     <MuiThemeProvider theme={newTheme}>
-      <MuiThemeProviderOld muiTheme={oldTheme}>
         <Router history={customHistory}>
           <Switch>
             <Route exact path="/" render={renderLayout(TheScienceTree)} />
-            <Route path="/search" render={renderLayout(Search)} />
+            <Route path="/professor" render={renderLayout(ProfessorList)} />
 
             <Route path="/dashboard" render={renderLayout(NotFound)} />{/* Rota para painel geral */}
 
             <Route render={renderLayout(NotFound)} />
           </Switch>
         </Router>
-      </MuiThemeProviderOld>
     </MuiThemeProvider>
   </Provider>
 );
