@@ -10,7 +10,10 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import ReportIcon from '@material-ui/icons/Report';
 
 export const Menu = (props) =>
-  <Drawer open={props.drawerOpen} onClose={props.handleToggle}>
+  <Drawer
+    open={props.drawerOpen}
+    onClose={props.handleToggle}
+  >
     <div
       tabIndex={0}
       role="button"
@@ -18,53 +21,23 @@ export const Menu = (props) =>
       onKeyDown={props.handleToggle}
     >
       <List>
-        <ListItem button>
-          <Link to="/professor">
-            <ListItemIcon>
-              <InboxIcon />
-            </ListItemIcon>
-            <ListItemText primary="Professor" />
-          </Link>
+        <ListItem component={Link} to="/professor">
+          <ListItemText primary="Professor" />
         </ListItem>
-        <ListItem button>
-          <ListItemIcon>
+        <ListItem component={Link} to="/turma">
+          {/* <ListItemIcon>
             <StarIcon />
-          </ListItemIcon>
+          </ListItemIcon> */}
           <ListItemText primary="Turma" />
         </ListItem>
-        <ListItem button>
-          <ListItemIcon>
-            <SendIcon />
-          </ListItemIcon>
+        <ListItem component={Link} to="/aluno">
           <ListItemText primary="Aluno" />
-        </ListItem>
-        <ListItem button>
-          <ListItemIcon>
-            <DraftsIcon />
-          </ListItemIcon>
-          <ListItemText primary="Drafts" />
         </ListItem>
       </List>
       <Divider />
       <List>
-        <ListItem button>
-          <ListItemIcon>
-            <MailIcon />
-          </ListItemIcon>
-          <ListItemText primary="All mail" />
-        </ListItem>
-        <ListItem button>
-          <ListItemIcon>
-            <DeleteIcon />
-          </ListItemIcon>
-
-          <ListItemText primary="Trash" />
-        </ListItem>
-        <ListItem button>
-          <ListItemIcon>
-            <ReportIcon />
-          </ListItemIcon>
-          <ListItemText primary="Spam" />
+        <ListItem component={Link} to="/relatorio">
+          <ListItemText primary="Relatorio" />
         </ListItem>
       </List>
     </div>

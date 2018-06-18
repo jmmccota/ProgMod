@@ -1,12 +1,11 @@
 package br.ufmg.dcc.scholar.controller;
 
-import java.util.Collection;
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -17,17 +16,26 @@ import br.ufmg.dcc.scholar.repository.StudentRepository;
 @RestController
 @RequestMapping(value = "/students")
 public class StudentsController {
-	
+
 	private final StudentRepository studentRepository;
-		
+
 	@Autowired
 	public StudentsController(StudentRepository studentRepository) {
 		this.studentRepository = studentRepository;
 	}
 
-
 	@GetMapping
 	Page<Student> list(@RequestParam int page, @RequestParam int size) {
 		return this.studentRepository.findAll(PageRequest.of(page, size));
+	}
+
+	@GetMapping("/obterTodos")
+	Iterable<Student> obterTodos() {
+		return this.studentRepository.findAll();
+	}
+
+	@PostMapping("/salvar")
+	Student salvar(@RequestBody Student dados) {
+		return this.studentRepository.save(dados);
 	}
 }

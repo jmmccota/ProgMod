@@ -16,7 +16,7 @@ export default class List extends React.Component {
     this.carregar();
   }
   carregar = () => {
-    return axios.get('/professors/obterTodos').then(resp => {
+    return axios.get('/students/obterTodos').then(resp => {
       console.log(resp);
       this.setState({ data: resp });
     });
@@ -36,7 +36,7 @@ export default class List extends React.Component {
   render() {
     const columns = [{
       dataField: 'id',
-      text: 'Código do professor',
+      text: 'Código do aluno',
       sort: true,
     }, {
       dataField: 'firstName',
