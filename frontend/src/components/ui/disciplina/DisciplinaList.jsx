@@ -7,7 +7,7 @@ import { Cadastrar } from './Cadastrar';
 import DeleteIcon from '@material-ui/icons/Delete';
 
 
-export default class CursoList extends React.Component {
+export default class DisciplinaList extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -65,7 +65,7 @@ export default class CursoList extends React.Component {
                 data={this.state.data}
                 columns={columns}
                 filter={filterFactory()}
-                noDataIndication={'Não existem professores cadastrados'}
+                noDataIndication={'Não existem disciplinas cadastrados'}
               />
             </CardContent>
           </Card>

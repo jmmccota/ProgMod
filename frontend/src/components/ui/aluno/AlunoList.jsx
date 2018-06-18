@@ -65,7 +65,7 @@ export default class AlunoList extends React.Component {
                 data={this.state.data}
                 columns={columns}
                 filter={filterFactory()}
-                noDataIndication={'Não existem professores cadastrados'}
+                noDataIndication={'Não existem alunos cadastrados'}
               />
             </CardContent>
           </Card>

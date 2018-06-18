@@ -41,7 +41,7 @@ export default class Tabela extends React.Component {
     }
   }
   render() {
-    const { keyField, data, columns } = this.props;
+    const { keyField, data, columns, noDataIndication } = this.props;
     return (
       <BootstrapTable
         {...this.props}
@@ -49,6 +49,7 @@ export default class Tabela extends React.Component {
         data={data}
         columns={columns}
         striped
+        noDataIndication={noDataIndication || 'Não existem informações para serem exibidas'}
         pagination={paginationFactory(this.state.options)}
         overlay={overlayFactory({ spinner: true, background: 'rgba(192,192,192,0.3)' })}
       />
