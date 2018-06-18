@@ -1,11 +1,12 @@
 import React from 'react';
 import axios from 'axios';
 import filterFactory, { textFilter } from 'react-bootstrap-table2-filter';
-import { Card, CardContent } from '@material-ui/core';
+import { Card, CardContent, Grid, Divider } from '@material-ui/core';
 import Tabela from '../utils/Tabela';
+import { Cadastrar } from './Cadastrar';
 
 
-export default class ProfessorList extends React.Component {
+export default class List extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -34,17 +35,23 @@ export default class ProfessorList extends React.Component {
     }];
     return (
       <div>
-        <Card>
-          <CardContent>
-            <Tabela
-              keyField="id"
-              data={this.state.data}
-              columns={columns}
-              filter={filterFactory()}
-              noDataIndication={'Não existem professores cadastrados'}
-            />
-          </CardContent>
-        </Card>
+        <Grid fluid>
+          <Cadastrar
+            callbackCarregar={this.carregar}
+          />
+          <Divider />
+          <Card>
+            <CardContent>
+              <Tabela
+                keyField="id"
+                data={this.state.data}
+                columns={columns}
+                filter={filterFactory()}
+                noDataIndication={'Não existem professores cadastrados'}
+              />
+            </CardContent>
+          </Card>
+        </Grid >
       </div>
     );
   }

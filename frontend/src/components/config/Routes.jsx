@@ -13,7 +13,7 @@ import injectTapEventPlugin from 'react-tap-event-plugin';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 
 import './AxiosConfig';
-import ProfessorList from '../ui/professor/ProfessorList';
+import List from '../ui/professor/List';
 
 injectTapEventPlugin();
 
@@ -35,7 +35,7 @@ const Routes = () => (
         <Router history={customHistory}>
           <Switch>
             <Route exact path="/" render={renderLayout(TheScienceTree)} />
-            <Route path="/professor" render={renderLayout(ProfessorList)} />
+            <Route path="/professor" render={renderLayout(List)} />
 
             <Route path="/dashboard" render={renderLayout(NotFound)} />{/* Rota para painel geral */}
 
