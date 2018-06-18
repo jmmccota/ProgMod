@@ -15,6 +15,7 @@ import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import './AxiosConfig';
 import ProfessorList from '../ui/professor/ProfessorList';
 import AlunoList from '../ui/aluno/AlunoList';
+import CursoList from '../ui/curso/CursoList';
 
 injectTapEventPlugin();
 
@@ -38,6 +39,7 @@ const Routes = () => (
             <Route exact path="/" render={renderLayout(TheScienceTree)} />
             <Route path="/professor" render={renderLayout(ProfessorList)} />
             <Route path="/aluno" render={renderLayout(AlunoList)} />
+            <Route path="/curso" render={renderLayout(CursoList)} />
 
             <Route path="/dashboard" render={renderLayout(NotFound)} />{/* Rota para painel geral */}
 
