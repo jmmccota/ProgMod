@@ -21,11 +21,6 @@ public class ProfessorController {
 	@Autowired
 	private ProfessorService professorService;
 
-	@Autowired
-	public ProfessorController(ProfessorService professorService) {
-		this.professorService = professorService;
-	}
-
 	@GetMapping
 	Page<Professor> list(@RequestParam int page, @RequestParam int size) {
 		return this.professorService.findAll(PageRequest.of(page, size));

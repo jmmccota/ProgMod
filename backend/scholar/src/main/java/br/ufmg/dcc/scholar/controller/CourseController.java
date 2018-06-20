@@ -21,12 +21,8 @@ import br.ufmg.dcc.scholar.service.CourseService;
 @RequestMapping("/courses")
 public class CourseController {
 
-	private CourseService courseService;
-
 	@Autowired
-	public CourseController(CourseService courseService) {
-		this.courseService = courseService;
-	}
+	private CourseService courseService;
 
 	@GetMapping
 	Page<Course> list(@RequestParam int page, @RequestParam int size) {

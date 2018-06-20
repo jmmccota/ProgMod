@@ -20,11 +20,6 @@ public class SemesterController {
 	@Autowired
 	private SemesterService semesterService;
 
-	@Autowired
-	public SemesterController(SemesterService semesterService) {
-		this.semesterService = semesterService;
-	}
-
 	@GetMapping
 	Page<Semester> list(@RequestParam int page, @RequestParam int size) {
 		return this.semesterService.findAll(PageRequest.of(page, size));

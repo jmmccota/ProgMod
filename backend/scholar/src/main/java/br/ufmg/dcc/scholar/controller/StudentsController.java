@@ -21,11 +21,6 @@ public class StudentsController {
 	@Autowired
 	private StudentService studentService;
 
-	@Autowired
-	public StudentsController(StudentService studentService) {
-		this.studentService = studentService;
-	}
-
 	@GetMapping
 	Page<Student> list(@RequestParam int page, @RequestParam int size) {
 		return this.studentService.findAll(PageRequest.of(page, size));
