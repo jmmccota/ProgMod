@@ -2,14 +2,12 @@ package br.ufmg.dcc.scholar.domain;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.Table;
 import javax.persistence.Column;
 
 @Entity
-public class Course {
-
-    @javax.persistence.Id
-    @GeneratedValue
-    private Long id;
+@Table
+public class Course extends BaseEntity {
 
     private String name;
 
@@ -18,18 +16,9 @@ public class Course {
     public Course() { }
 
     public Course(Long id, String name, String code) {
-        this.id = id;
+        super.setId(id);
         this.name = name;
         this.code = code;
-    }
-
-    @Column(name = "COURSE_ID")
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public String getName() {

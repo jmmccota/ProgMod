@@ -1,5 +1,7 @@
 package br.ufmg.dcc.scholar.controller;
 
+import java.util.Collection;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -13,30 +15,31 @@ import org.springframework.web.bind.annotation.RestController;
 import br.ufmg.dcc.scholar.domain.Course;
 import br.ufmg.dcc.scholar.domain.Professor;
 import br.ufmg.dcc.scholar.repository.CourseRepository;
+import br.ufmg.dcc.scholar.service.CourseService;
 
 @RestController
-@RequestMapping(value = "/courses")
+@RequestMapping("/courses")
 public class CourseController {
 
-    private final CourseRepository courseRepository;
+	private CourseService courseService;
 
-    @Autowired
-    public CourseController(CourseRepository courseRepository) {
-        this.courseRepository = courseRepository;
-    }
+	@Autowired
+	public CourseController(CourseService courseService) {
+		this.courseService = courseService;
+	}
 
-    @GetMapping
-    Page<Course> list(@RequestParam int page, @RequestParam int size) {
-        return this.courseRepository.findAll(PageRequest.of(page, size));
-    }
-    
-    @GetMapping("/obterTodos")
-    Iterable<Course> obterTodos() {
-        return this.courseRepository.findAll();
-    }
-    
-    @PostMapping("/salvar")
-    Course salvar(@RequestBody Course dados) {
-        return this.courseRepository.save(dados);
-    }
+	@GetMapping
+	Page<Course> list(@RequestParam int page, @RequestParam int size) {
+		return this.courseService.findAll(PageRequest.of(page, size));
+	}
+
+	@GetMapping("/obterTodos")
+	Collection<Course> obterTodos() {
+		return this.courseService.findAll();
+	}
+
+	@PostMapping("/salvar")
+	Course salvar(@RequestBody Course dados) {
+		return this.courseService.save(dados);
+	}
 }

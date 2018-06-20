@@ -2,11 +2,13 @@ package br.ufmg.dcc.scholar.repository;
 
 import java.util.Collection;
 
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.PagingAndSortingRepository;
+import org.springframework.data.repository.cdi.Eager;
 
 import br.ufmg.dcc.scholar.domain.Student;
-
-public interface StudentRepository extends PagingAndSortingRepository<Student, Long> {
+@Eager
+public interface StudentRepository extends JpaRepository<Student, Long> {
 	
 	Collection<Student> findByFirstName(String firstName);
 

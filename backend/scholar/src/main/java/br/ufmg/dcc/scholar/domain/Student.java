@@ -2,13 +2,11 @@ package br.ufmg.dcc.scholar.domain;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.Table;
 
 @Entity
-public class Student {
-	
-	@javax.persistence.Id
-	@GeneratedValue
-	private Long id;
+@Table
+public class Student extends BaseEntity {
 
 	private String firstName;
 
@@ -17,17 +15,9 @@ public class Student {
 	public Student() { }
 
 	public Student(Long id, String firstName, String lastName) {
-		this.id = id;
+		super.setId(id);
 		this.firstName = firstName;
 		this.lastName = lastName;
-	}
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
 	}
 
 	public String getFirstName() {

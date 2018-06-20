@@ -10,21 +10,23 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.ufmg.dcc.scholar.domain.Semester;
 import br.ufmg.dcc.scholar.repository.SemesterRepository;
+import br.ufmg.dcc.scholar.service.CourseService;
+import br.ufmg.dcc.scholar.service.SemesterService;
 
 @RestController
 @RequestMapping(value = "/semesters")
 public class SemesterController {
 
-    private final SemesterRepository semesterRepository;
+	@Autowired
+	private SemesterService semesterService;
 
-    @Autowired
-    public SemesterController(SemesterRepository semesterRepository) {
-        this.semesterRepository = semesterRepository;
-    }
+	@Autowired
+	public SemesterController(SemesterService semesterService) {
+		this.semesterService = semesterService;
+	}
 
-
-    @GetMapping
-    Page<Semester> list(@RequestParam int page, @RequestParam int size) {
-        return this.semesterRepository.findAll(PageRequest.of(page, size));
-    }
+	@GetMapping
+	Page<Semester> list(@RequestParam int page, @RequestParam int size) {
+		return this.semesterService.findAll(PageRequest.of(page, size));
+	}
 }

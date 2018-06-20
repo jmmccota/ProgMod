@@ -12,30 +12,32 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.ufmg.dcc.scholar.domain.Professor;
 import br.ufmg.dcc.scholar.repository.ProfessorRepository;
+import br.ufmg.dcc.scholar.service.CourseService;
+import br.ufmg.dcc.scholar.service.ProfessorService;
 
 @RestController
 @RequestMapping(value = "/professors")
 public class ProfessorController {
+	@Autowired
+	private ProfessorService professorService;
 
-    private final ProfessorRepository professorRepository;
+	@Autowired
+	public ProfessorController(ProfessorService professorService) {
+		this.professorService = professorService;
+	}
 
-    @Autowired
-    public ProfessorController(ProfessorRepository professorRepository) {
-        this.professorRepository = professorRepository;
-    }
+	@GetMapping
+	Page<Professor> list(@RequestParam int page, @RequestParam int size) {
+		return this.professorService.findAll(PageRequest.of(page, size));
+	}
 
-    @GetMapping
-    Page<Professor> list(@RequestParam int page, @RequestParam int size) {
-        return this.professorRepository.findAll(PageRequest.of(page, size));
-    }
-    
-    @GetMapping("/obterTodos")
-    Iterable<Professor> obterTodos() {
-        return this.professorRepository.findAll();
-    }
-    
-    @PostMapping("/salvar")
-    Professor salvar(@RequestBody Professor dados) {
-        return this.professorRepository.save(dados);
-    }
+	@GetMapping("/obterTodos")
+	Iterable<Professor> obterTodos() {
+		return this.professorService.findAll();
+	}
+
+	@PostMapping("/salvar")
+	Professor salvar(@RequestBody Professor dados) {
+		return this.professorService.save(dados);
+	}
 }

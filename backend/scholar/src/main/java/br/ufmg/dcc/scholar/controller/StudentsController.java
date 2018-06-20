@@ -12,30 +12,32 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.ufmg.dcc.scholar.domain.Student;
 import br.ufmg.dcc.scholar.repository.StudentRepository;
+import br.ufmg.dcc.scholar.service.CourseService;
+import br.ufmg.dcc.scholar.service.StudentService;
 
 @RestController
 @RequestMapping(value = "/students")
 public class StudentsController {
-
-	private final StudentRepository studentRepository;
+	@Autowired
+	private StudentService studentService;
 
 	@Autowired
-	public StudentsController(StudentRepository studentRepository) {
-		this.studentRepository = studentRepository;
+	public StudentsController(StudentService studentService) {
+		this.studentService = studentService;
 	}
 
 	@GetMapping
 	Page<Student> list(@RequestParam int page, @RequestParam int size) {
-		return this.studentRepository.findAll(PageRequest.of(page, size));
+		return this.studentService.findAll(PageRequest.of(page, size));
 	}
 
 	@GetMapping("/obterTodos")
 	Iterable<Student> obterTodos() {
-		return this.studentRepository.findAll();
+		return this.studentService.findAll();
 	}
 
 	@PostMapping("/salvar")
 	Student salvar(@RequestBody Student dados) {
-		return this.studentRepository.save(dados);
+		return this.studentService.save(dados);
 	}
 }
