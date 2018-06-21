@@ -18,7 +18,7 @@ export default class DisciplinaList extends React.Component {
   carregar = () => {
     return axios
       .get('/courses/obterTodos')
-      .then(({data}) => {
+      .then(({ data }) => {
         this.setState({ data });
       });
   }
