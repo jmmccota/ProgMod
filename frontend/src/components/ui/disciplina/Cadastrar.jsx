@@ -17,14 +17,12 @@ class CadastrarComponent extends React.Component {
 
   salvar = (values) => {
     return axios
-      .post('/courses/salvar',
-        {
-          data: values
-        }).then(({ data }) => {
-          this.setState({ busca: data });
-          this.props.callbackCarregar &&
-            this.props.callbackCarregar();
-        });
+      .post('/courses/salvar', values)
+      .then(({ data }) => {
+        this.setState({ busca: data });
+        this.props.callbackCarregar &&
+          this.props.callbackCarregar();
+      });
   }
 
   render() {
@@ -57,7 +55,7 @@ class CadastrarComponent extends React.Component {
                         {submitting && <CircularProgress thickness={7} />}
                       </Col>
                       <Col xs={12} md={5}>
-                        <Button variant="raised" color="primary" style={{ width: "100%" }} disabled={pristine || submitting} onClick={this.salvar}>Salvar</Button>
+                        <Button variant="raised" color="primary" style={{ width: "100%" }} disabled={pristine || submitting} onClick={handleSubmit(this.salvar)}>Salvar</Button>
                       </Col>
                       <Col xs={12} md={5}>
                         <Button variant="raised" color="secondary" style={{ width: "100%" }} disabled={pristine || submitting} onClick={reset}>Limpar</Button>

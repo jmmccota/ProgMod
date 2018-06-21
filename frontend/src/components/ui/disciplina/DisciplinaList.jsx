@@ -16,10 +16,12 @@ export default class DisciplinaList extends React.Component {
     this.carregar();
   }
   carregar = () => {
-    return axios.get('/courses/obterTodos').then(resp => {
-      console.log(resp);
-      this.setState({ data: resp });
-    });
+    return axios
+      .get('/courses/obterTodos')
+      .then(resp => {
+        console.log(resp);
+        this.setState({ data: resp });
+      });
   }
   excluir = (val) => {
     console.log(val);

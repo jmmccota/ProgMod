@@ -11,13 +11,10 @@ import org.springframework.web.filter.CorsFilter;
 @SpringBootApplication
 public class ScholarApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(ScholarApplication.class, args);
-	}
 	@Bean
 	public FilterRegistrationBean corsFilter() {
 	    UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-	    CorsConfiguration config = new CorsConfiguration();
+	    CorsConfiguration config = new CorsConfiguration().applyPermitDefaultValues();
 	    config.setAllowCredentials(true);
 	    config.addAllowedOrigin("*");
 	    config.addAllowedHeader("*");
@@ -34,4 +31,9 @@ public class ScholarApplication {
 	    bean.setOrder(0);
 	    return bean;
 	}
+	
+	public static void main(String[] args) {
+		SpringApplication.run(ScholarApplication.class, args);
+	}
+	
 }
