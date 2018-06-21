@@ -18,9 +18,8 @@ export default class ProfessorList extends React.Component {
   carregar = () => {
     return axios
       .get('/professors/obterTodos')
-      .then(resp => {
-        console.log(resp);
-        this.setState({ data: resp });
+      .then(({data}) => {
+        this.setState({ data });
       });
   }
   excluir = (val) => {

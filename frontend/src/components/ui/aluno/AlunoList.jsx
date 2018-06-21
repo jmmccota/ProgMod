@@ -17,9 +17,9 @@ export default class AlunoList extends React.Component {
   }
   carregar = () => {
     return axios
-      .get('/students/obterTodos').then(resp => {
-        console.log(resp);
-        this.setState({ data: resp.data });
+      .get('/students/obterTodos')
+      .then(({ data }) => {
+        this.setState({ data });
       });
   }
   excluir = (val) => {
