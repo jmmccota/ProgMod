@@ -9,6 +9,8 @@
     "ajv-keywords": "^3.2.0",
     "axios": "^0.18.0",
     "bootstrap": "^4.0.0",
+    "fuse.js": "3.2.1",
+    "lodash": "4.17.10",
     "prop-types": "^15.6.1",
     "react": "^16.4.0",
     "react-bootstrap-table-next": "^0.1.13",
@@ -24,9 +26,9 @@
     "react-tap-event-plugin": "^3.0.3",
     "redux": "^4.0.0",
     "redux-form": "^7.4.0",
-    "redux-form-material-ui": "^4.3.4",
+    "redux-form-material-ui": "^5.0.0-beta.3",
     "redux-thunk": "^2.3.0",
-    "selectivity": "^3.0.6",
+    "selectivity": "3.0.6",
     "vis": "^4.19.1"
   },
   "devDependencies": {

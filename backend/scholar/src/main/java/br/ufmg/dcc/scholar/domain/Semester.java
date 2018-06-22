@@ -11,11 +11,11 @@ public class Semester extends BaseEntity {
 
     private Integer year;
 
-    private Boolean semester;
+    private Integer semester;
 
     public Semester() { }
 
-    public Semester(Long id, Integer year, Boolean semester) {
+    public Semester(Long id, Integer year, Integer semester) {
         super.setId(id);;
         this.year = year;
         this.semester = semester;
@@ -29,11 +29,11 @@ public class Semester extends BaseEntity {
         this.year = year;
     }
 
-    public Boolean getSemester() {
+    public Integer getSemester() {
         return semester;
     }
 
-    public void setSemester(Boolean semester) {
+    public void setSemester(Integer semester) {
         this.semester = semester;
     }
 }
