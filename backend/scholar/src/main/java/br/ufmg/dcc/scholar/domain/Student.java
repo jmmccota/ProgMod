@@ -11,13 +11,16 @@ public class Student extends BaseEntity {
 	private String firstName;
 
 	private String lastName;
+	
+	private String registerNumber;
 
 	public Student() { }
 
-	public Student(Long id, String firstName, String lastName) {
+	public Student(Long id, String firstName, String lastName, String registerNumber) {
 		super.setId(id);
 		this.firstName = firstName;
 		this.lastName = lastName;
+		this.registerNumber = registerNumber;
 	}
 
 	public String getFirstName() {
@@ -36,4 +39,11 @@ public class Student extends BaseEntity {
 		this.lastName = lastName;
 	}
 
+	public String getRegisterNumber() {
+		return registerNumber;
+	}
+
+	public void setRegisterNumber(String registerNumber) {
+		this.registerNumber = registerNumber;
+	}
 }
