@@ -57,6 +57,14 @@ public abstract class BaseService<E>
   {
     this.getEntityRepository().delete(entity);
   }
+  
+  /**
+   * @param id de entity a ser exclu[ida.
+   */
+  public void deleteById(Long id)
+  {
+    this.getEntityRepository().deleteById(id);
+  }
 
   /**
    * Salva um objeto sem flush.

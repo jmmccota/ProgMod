@@ -1,9 +1,12 @@
 package br.ufmg.dcc.scholar.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.crossstore.ChangeSetPersister.NotFoundException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.ufmg.dcc.scholar.domain.Professor;
+import br.ufmg.dcc.scholar.domain.Student;
 import br.ufmg.dcc.scholar.repository.ProfessorRepository;
 import br.ufmg.dcc.scholar.service.CourseService;
 import br.ufmg.dcc.scholar.service.ProfessorService;
@@ -34,5 +38,24 @@ public class ProfessorController {
 	@PostMapping("/salvar")
 	Professor salvar(@RequestBody Professor dados) {
 		return this.professorService.save(dados);
+	}
+	
+	@GetMapping("/{id}")
+	public Professor retrieveProfessor(@PathVariable long id) {
+		Professor professor = null;
+		try{
+			 professor = this.professorService.findOne(id);
+		}
+		catch(Exception e){
+			// Tratar exceção
+			// throw new ProfessorNotFoundException("Nao encontrado professor com id "+id);
+			System.out.println("Nao encontrado professor com id \"+id");
+		}
+		return professor;
+	}
+	
+	@DeleteMapping("/{id}")
+	public void deleteStudent(@PathVariable long id) {
+		this.professorService.deleteById(id);
 	}
 }

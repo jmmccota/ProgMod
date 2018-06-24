@@ -14,6 +14,8 @@ public class Student extends BaseEntity {
 	
 	private String registerNumber;
 
+	// Adicionar array OfertaCurso
+	
 	public Student() { }
 
 	public Student(Long id, String firstName, String lastName, String registerNumber) {
