@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -35,8 +36,8 @@ public class StudentsController {
 	}
 
 	@PostMapping("/salvar")
-	Student salvar(@RequestBody Student dados) {
-		return this.studentService.save(dados);
+	Student salvar(@RequestBody Student data) {
+		return this.studentService.save(data);
 	}
 	
 	@GetMapping("/{id}")
@@ -48,5 +49,14 @@ public class StudentsController {
 	@DeleteMapping("/{id}")
 	public void deleteStudent(@PathVariable long id) {
 		this.studentService.deleteById(id);
+	}
+	
+	@PutMapping("/{id}")
+	public void updateStudent(@RequestBody Student data, @PathVariable long id) {
+		// TODO validar se nao houver student com esse id
+		if(this.studentService.findOne(id) != null) {
+			data.setId(id);
+			this.studentService.save(data);
+		}
 	}
 }

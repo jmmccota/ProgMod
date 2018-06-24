@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.ufmg.dcc.scholar.domain.Course;
 import br.ufmg.dcc.scholar.domain.Professor;
+import br.ufmg.dcc.scholar.domain.Student;
 import br.ufmg.dcc.scholar.repository.CourseRepository;
 import br.ufmg.dcc.scholar.service.CourseService;
 
@@ -37,8 +39,8 @@ public class CourseController {
 	}
 
 	@PostMapping("/salvar")
-	Course salvar(@RequestBody Course dados) {
-		return this.courseService.save(dados);
+	Course salvar(@RequestBody Course data) {
+		return this.courseService.save(data);
 	}
 	
 	@GetMapping("/{id}")
@@ -49,5 +51,13 @@ public class CourseController {
 	@DeleteMapping("/{id}")
 	void deleteCourse(@PathVariable long id) {
 		this.courseService.deleteById(id);
+	}
+	
+	@PutMapping("/{id}")
+	public void updateCourse(@RequestBody Course data, @PathVariable long id) {
+		if(this.courseService.findOne(id) != null) {
+			data.setId(id);
+			this.courseService.save(data);
+		}
 	}
 }
