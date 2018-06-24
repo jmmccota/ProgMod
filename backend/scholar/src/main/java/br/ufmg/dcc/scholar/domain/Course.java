@@ -6,7 +6,6 @@ import javax.persistence.Table;
 import javax.persistence.Column;
 
 @Entity
-@Table
 public class Course extends BaseEntity {
 
     private String name;

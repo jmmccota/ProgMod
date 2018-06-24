@@ -1,5 +1,7 @@
 package br.ufmg.dcc.scholar.domain;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Table;
@@ -8,13 +10,11 @@ import javax.persistence.Table;
 @Table
 public class Student extends BaseEntity {
 
-	private String firstName;
+	protected String firstName;
 
-	private String lastName;
+	protected String lastName;
 	
-	private String registerNumber;
-
-	// Adicionar array OfertaCurso
+	protected String registerNumber;
 	
 	public Student() { }
 

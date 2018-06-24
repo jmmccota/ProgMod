@@ -9,8 +9,6 @@ import java.util.Collection;
 @Eager
 public interface OfertaCursoRepository extends JpaRepository<OfertaCurso, Long> {
 
-    Collection<OfertaCurso> findByProfessor(Professor professor);
-
     Collection<OfertaCurso> findBySemester(Semester semester);
 
     Collection<OfertaCurso> findByCourse(Course course);

@@ -10,11 +10,6 @@ public class OfertaCurso implements Serializable {
 
     @Id
     @ManyToOne
-    //@JoinColumn(name="professor_id")
-    private Professor professor;
-
-    @Id
-    @ManyToOne
     //@JoinColumn(name="semester_id")
     private Semester semester;
 
@@ -22,6 +17,5 @@ public class OfertaCurso implements Serializable {
     @ManyToOne
     //@JoinColumn(name="course_id")
     private Course course;
-
 
 }
