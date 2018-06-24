@@ -51,11 +51,12 @@ public class ProfessorController {
 			// throw new ProfessorNotFoundException("Nao encontrado professor com id "+id);
 			System.out.println("Nao encontrado professor com id \"+id");
 		}
+		
 		return professor;
 	}
 	
 	@DeleteMapping("/{id}")
-	public void deleteStudent(@PathVariable long id) {
+	public void deleteProfessor(@PathVariable long id) {
 		this.professorService.deleteById(id);
 	}
 }
