@@ -1,7 +1,5 @@
 package br.ufmg.dcc.scholar.domain;
 
-import java.util.List;
-
 interface IEmployee {
 	
 	public double retrieveSalary();

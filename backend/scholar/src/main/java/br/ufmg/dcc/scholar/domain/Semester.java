@@ -1,9 +1,7 @@
 package br.ufmg.dcc.scholar.domain;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
 import javax.persistence.Table;
-import javax.persistence.Column;
 
 @Entity
 @Table
@@ -16,7 +14,7 @@ public class Semester extends BaseEntity {
     public Semester() { }
 
     public Semester(Long id, Integer year, Integer semester) {
-        super.setId(id);;
+        super.setId(id);
         this.year = year;
         this.semester = semester;
     }

@@ -1,9 +1,11 @@
 package br.ufmg.dcc.scholar.domain;
 
-import org.apache.commons.lang3.ObjectUtils;
-import org.hibernate.annotations.ColumnDefault;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.MappedSuperclass;
 
-import javax.persistence.*;
+import org.apache.commons.lang3.ObjectUtils;
 
 @MappedSuperclass
 public abstract class BaseEntity implements Comparable<BaseEntity> {

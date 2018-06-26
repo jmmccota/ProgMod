@@ -1,10 +1,8 @@
 package br.ufmg.dcc.scholar.domain;
 
-import java.util.List;
-
 import javax.persistence.OneToMany;
 
-public class Monitor extends Student implements IEmployee{
+public class Monitor extends Student implements IEmployee {
 	private String cpf;
 
 	private double salary;
