@@ -7,6 +7,7 @@ import org.springframework.stereotype.Component;
 
 import br.ufmg.dcc.scholar.domain.Course;
 import br.ufmg.dcc.scholar.domain.CourseOffering;
+import br.ufmg.dcc.scholar.domain.Professor;
 import br.ufmg.dcc.scholar.domain.Semester;
 import br.ufmg.dcc.scholar.repository.CourseOfferingRepository;
 
@@ -21,7 +22,7 @@ public class CourseOfferingService extends BaseService<CourseOffering> {
 		return courseOfferingRepository;
 	}
 	
-	public CourseOffering findByCourseAndSemester(Course course, Semester semester) {
-		return courseOfferingRepository.findByCourseAndSemester(course, semester);
+	public CourseOffering findByCourseAndSemesterAndProfessor(Course course, Semester semester, Professor professor) {
+		return courseOfferingRepository.findByCourseAndSemesterAndProfessor(course, semester, professor);
 	}
 }

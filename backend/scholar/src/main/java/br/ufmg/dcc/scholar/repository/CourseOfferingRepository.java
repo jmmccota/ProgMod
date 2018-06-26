@@ -13,6 +13,6 @@ public interface CourseOfferingRepository extends JpaRepository<CourseOffering, 
 
     Collection<CourseOffering> findByCourse(Course course);
     
-    CourseOffering findByCourseAndSemester(Course course, Semester semester);
+    CourseOffering findByCourseAndSemesterAndProfessor(Course course, Semester semester, Professor professor);
 
 }

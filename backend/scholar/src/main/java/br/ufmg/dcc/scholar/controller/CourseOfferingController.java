@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -16,9 +15,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.ufmg.dcc.scholar.domain.Course;
 import br.ufmg.dcc.scholar.domain.CourseOffering;
+import br.ufmg.dcc.scholar.domain.Professor;
 import br.ufmg.dcc.scholar.domain.Semester;
 import br.ufmg.dcc.scholar.service.CourseOfferingService;
 import br.ufmg.dcc.scholar.service.CourseService;
+import br.ufmg.dcc.scholar.service.ProfessorService;
 import br.ufmg.dcc.scholar.service.SemesterService;
 
 @RestController
@@ -30,15 +31,19 @@ public class CourseOfferingController {
     private final CourseService courseService;
     
     private final SemesterService semesterService;
+    
+    private final ProfessorService professorService;
 
     @Autowired
     public CourseOfferingController(
     		CourseOfferingService courseOfferingService,
     		CourseService courseService, 
-    		SemesterService semesterService) {
+    		SemesterService semesterService,
+    		ProfessorService professorService) {
         this.courseOfferingService = courseOfferingService;
         this.courseService = courseService;
         this.semesterService = semesterService;
+        this.professorService = professorService;
     }
 
 
@@ -50,9 +55,10 @@ public class CourseOfferingController {
     
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public CourseOffering salvar(@PathVariable long semester, @RequestParam long course) {
+    public CourseOffering salvar(@PathVariable long semester, @RequestParam long course, @RequestParam long professor) {
 		Semester semesterEntity = this.semesterService.findOne(semester);
     	Course courseEntity = this.courseService.findOne(course);
+    	Professor professorEntity = this.professorService.findOne(professor);
     	
     	if(semesterEntity == null) {
     		throw new IllegalArgumentException("Semestre não existe");
@@ -62,15 +68,20 @@ public class CourseOfferingController {
     		throw new IllegalArgumentException("Curso não existe");
     	}
     	
-    	CourseOffering courseOffering = new CourseOffering(semesterEntity, courseEntity);
+    	if(professorEntity == null) {
+    		throw new IllegalArgumentException("Professor não existe");
+    	}
+    	
+    	CourseOffering courseOffering = new CourseOffering(semesterEntity, courseEntity, professorEntity);
     	return this.courseOfferingService.save(courseOffering);
     }
     
-    @DeleteMapping("/{course}")
+    @DeleteMapping("/{course}/{professor}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void delete(@PathVariable long semester, @PathVariable long course) {
+    public void delete(@PathVariable long semester, @PathVariable long course, @PathVariable long professor) {
     	Semester semesterEntity = this.semesterService.findOne(semester);
     	Course courseEntity = this.courseService.findOne(course);
+    	Professor professorEntity = this.professorService.findOne(professor);
     	
     	if(semesterEntity == null) {
     		throw new IllegalArgumentException("Semestre não existe");
@@ -80,7 +91,12 @@ public class CourseOfferingController {
     		throw new IllegalArgumentException("Curso não existe");
     	}
     	
-    	CourseOffering courseOfferingEntity = this.courseOfferingService.findByCourseAndSemester(courseEntity, semesterEntity);
+    	if(professorEntity == null) {
+    		throw new IllegalArgumentException("Professor não existe");
+    	}
+    	
+    	CourseOffering courseOfferingEntity =
+    			this.courseOfferingService.findByCourseAndSemesterAndProfessor(courseEntity, semesterEntity, professorEntity);
     	
     	if(courseOfferingEntity == null) {
     		throw new IllegalArgumentException("Oferta não existe");
