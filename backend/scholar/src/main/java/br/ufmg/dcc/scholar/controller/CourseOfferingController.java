@@ -23,7 +23,7 @@ import br.ufmg.dcc.scholar.service.ProfessorService;
 import br.ufmg.dcc.scholar.service.SemesterService;
 
 @RestController
-@RequestMapping(value = "/semesters/{semester}/offerings")
+@RequestMapping(value = "/offerings")
 public class CourseOfferingController {
 
     private final CourseOfferingService courseOfferingService;
@@ -47,10 +47,16 @@ public class CourseOfferingController {
     }
 
 
-    @GetMapping
+    @GetMapping("/semester/{semester}")
 	@ResponseStatus(HttpStatus.OK)
-    public Page<CourseOffering> list(@PathVariable long semester, @RequestParam int page, @RequestParam int size) {
-        return this.courseOfferingService.findAll(PageRequest.of(page, size));
+    public Page<CourseOffering> listBySemester(@PathVariable long semester, @RequestParam int page, @RequestParam int size) {
+        Semester semesterEntity = semesterService.findOne(semester);
+        
+        if(semesterEntity == null) {
+        	throw new IllegalArgumentException("Semestre não existe");
+        }
+    	
+    	return this.courseOfferingService.findBySemester(semesterEntity, PageRequest.of(page, size));
     }
     
     @PostMapping
@@ -76,27 +82,12 @@ public class CourseOfferingController {
     	return this.courseOfferingService.save(courseOffering);
     }
     
-    @DeleteMapping("/{course}/{professor}")
+    @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void delete(@PathVariable long semester, @PathVariable long course, @PathVariable long professor) {
-    	Semester semesterEntity = this.semesterService.findOne(semester);
-    	Course courseEntity = this.courseService.findOne(course);
-    	Professor professorEntity = this.professorService.findOne(professor);
-    	
-    	if(semesterEntity == null) {
-    		throw new IllegalArgumentException("Semestre não existe");
-    	}
-    
-    	if(courseEntity == null) {
-    		throw new IllegalArgumentException("Curso não existe");
-    	}
-    	
-    	if(professorEntity == null) {
-    		throw new IllegalArgumentException("Professor não existe");
-    	}
-    	
+    public void delete(@PathVariable long id) {
+    	    	
     	CourseOffering courseOfferingEntity =
-    			this.courseOfferingService.findByCourseAndSemesterAndProfessor(courseEntity, semesterEntity, professorEntity);
+    			this.courseOfferingService.findOne(id);
     	
     	if(courseOfferingEntity == null) {
     		throw new IllegalArgumentException("Oferta não existe");
