@@ -23,7 +23,10 @@ export default class DisciplinaList extends React.Component {
       });
   }
   excluir = (val) => {
-    console.log(val);
+    return axios.delete('/courses/'+ val)
+      .then(() => {
+        this.carregar();
+      });
   }
   formatAcoes = (cell, row) => {
     return (
