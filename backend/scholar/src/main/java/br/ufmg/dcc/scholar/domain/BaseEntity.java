@@ -10,7 +10,7 @@ import org.apache.commons.lang3.ObjectUtils;
 @MappedSuperclass
 public abstract class BaseEntity implements Comparable<BaseEntity> {
 	@Id
-	@GeneratedValue(strategy = GenerationType.TABLE)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 
 	public Long getId() {
