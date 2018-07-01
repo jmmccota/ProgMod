@@ -4,7 +4,6 @@ import { CircularProgress, Button, Card, CardContent, CardActions, CardHeader } 
 import axios from 'axios';
 import { withRouter } from 'react-router-dom';
 import { reduxForm } from 'redux-form';
-import { TextFieldRedux } from '../../config/fields/TextFieldRedux';
 import { SelectivityRedux } from '../../config/fields/selectivity/SelectivityRedux';
 
 class CadastrarComponent extends React.Component {
