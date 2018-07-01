@@ -5,6 +5,7 @@ import axios from 'axios';
 import { withRouter } from 'react-router-dom';
 import { reduxForm } from 'redux-form';
 import { TextFieldRedux } from '../../config/fields/TextFieldRedux';
+import { normalizarCPF } from '../../config/normalization/CPFCNPJNormalize';
 
 class CadastrarComponent extends React.Component {
 
@@ -42,6 +43,9 @@ class CadastrarComponent extends React.Component {
                   </Col>
                   <Col xs={12} md={6}>
                     <TextFieldRedux name="lastName" label="Digite o sobrenome" style={{ width: "100%" }} />
+                  </Col>
+                  <Col xs={12} md={6}>
+                    <TextFieldRedux name="cpf" label="Digite o cpf" style={{ width: "100%" }} normalize={normalizarCPF} />
                   </Col>
                 </Row>
               </Grid>

@@ -26,9 +26,10 @@ class CampoTexto extends React.Component {
 
 export class TextFieldRedux extends React.Component {
   render() {
-    const { name, label, style } = this.props;
+    const { name, label, style, normalize } = this.props;
     return (
       <Field
+        normalize={normalize}
         name={name}
         label={label}
         style={style}
