@@ -39,6 +39,7 @@ public class StudentsController {
 	@PostMapping("/salvar")
 	@ResponseStatus(HttpStatus.CREATED)
 	Student salvar(@RequestBody Student data) {
+
 		return this.studentService.save(data);
 	}
 	
