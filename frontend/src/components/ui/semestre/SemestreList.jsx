@@ -17,13 +17,17 @@ export default class SemestreList extends React.Component {
   }
   carregar = () => {
     return axios
-      .get('/professors/obterTodos')
+      .get('/semesters/obterTodos')
       .then(({ data }) => {
+        console.log(data);
         this.setState({ data });
       });
   }
   excluir = (val) => {
-    console.log(val);
+    return axios.delete('/semesters/'+ val)
+      .then(() => {
+        this.carregar();
+      });
   }
   formatAcoes = (cell, row) => {
     return (
