@@ -23,7 +23,10 @@ export default class AlunoList extends React.Component {
       });
   }
   excluir = (val) => {
-    console.log(val);
+    return axios.delete('/students/'+ val)
+    .then(() => {
+      this.carregar();
+    });
   }
   formatAcoes = (cell, row) => {
     return (
