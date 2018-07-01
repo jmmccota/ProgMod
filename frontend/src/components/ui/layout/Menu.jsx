@@ -25,11 +25,8 @@ export const Menu = (props) =>
         <ListItem component={Link} to="/professor">
           <ListItemText primary="Professor" />
         </ListItem>
-        <ListItem component={Link} to="/turma">
-          {/* <ListItemIcon>
-            <StarIcon />
-          </ListItemIcon> */}
-          <ListItemText primary="Turma" />
+        <ListItem component={Link} to="/disciplina">
+          <ListItemText primary="Disciplina" />
         </ListItem>
         <ListItem component={Link} to="/aluno">
           <ListItemText primary="Aluno" />
