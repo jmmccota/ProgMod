@@ -23,7 +23,10 @@ export default class ProfessorList extends React.Component {
       });
   }
   excluir = (val) => {
-    console.log(val);
+    return axios.delete('/professors/'+ val)
+      .then(() => {
+        this.carregar();
+      });
   }
   formatAcoes = (cell, row) => {
     return (
