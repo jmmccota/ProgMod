@@ -37,11 +37,14 @@ class CadastrarComponent extends React.Component {
             <CardContent>
               <Grid fluid>
                 <Row>
-                  <Col xs={12} md={6}>
+                  <Col xs={12} md={4}>
                     <TextFieldRedux name="firstName" label="Digite o nome" style={{ width: "100%" }} />
                   </Col>
-                  <Col xs={12} md={6}>
+                  <Col xs={12} md={4}>
                     <TextFieldRedux name="lastName" label="Digite o sobrenome" style={{ width: "100%" }} />
+                  </Col>
+                  <Col xs={12} md={4}>
+                    <TextFieldRedux name="registerNumber" label="Número de Registro" style={{ width: "100%" }} />
                   </Col>
                 </Row>
               </Grid>

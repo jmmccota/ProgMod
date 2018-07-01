@@ -51,6 +51,10 @@ export default class AlunoList extends React.Component {
       text: 'Sobrenome',
       filter: textFilter()
     }, {
+      dataField: 'registerNumber',
+      text: 'Número de Registro',
+      filter: textFilter()
+    }, {
       dataField: 'id',
       text: 'Ações',
       formatter: this.formatAcoes,
