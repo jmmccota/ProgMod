@@ -21,7 +21,7 @@ import br.ufmg.dcc.scholar.service.MonitoringService;
 import br.ufmg.dcc.scholar.service.StudentService;
 
 @RestController
-@RequestMapping(value = "monitorings")
+@RequestMapping(value = "/monitorings")
 public class MonitoringController {
 
 	@Autowired
@@ -45,7 +45,7 @@ public class MonitoringController {
     	return this.monitoringService.findByStudent(studentEntity, PageRequest.of(page, size));
     } 
 	
-	@GetMapping("/student/{courseOffering}")
+	@GetMapping("/offering/{offering}")
 	@ResponseStatus(HttpStatus.OK)
     public Page<Monitoring> listByCourseOffering(@PathVariable long courseOffering, @RequestParam int page, @RequestParam int size) {
         CourseOffering courseOfferingEntity = courseOfferingService.findOne(courseOffering);
@@ -86,7 +86,5 @@ public class MonitoringController {
     	}
     	
     	this.monitoringService.delete(monitoringEntity);
-    }
-	
-	
+    }	
 }

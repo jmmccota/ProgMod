@@ -4,12 +4,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Component;
 
 import br.ufmg.dcc.scholar.domain.CourseOffering;
 import br.ufmg.dcc.scholar.domain.Monitoring;
 import br.ufmg.dcc.scholar.domain.Student;
 import br.ufmg.dcc.scholar.repository.IMonitoringRepository;
 
+@Component
 public class MonitoringService extends BaseService<Monitoring> {
 	
 	@Autowired

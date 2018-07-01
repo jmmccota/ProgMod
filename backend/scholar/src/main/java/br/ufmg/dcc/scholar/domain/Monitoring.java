@@ -1,9 +1,17 @@
 package br.ufmg.dcc.scholar.domain;
 
-public class Monitoring implements IEmployee {
+import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
+
+@Entity
+public class Monitoring extends BaseEntity implements IEmployee {
 	
+	@ManyToOne
 	private Student student;
+	
+	@ManyToOne
 	private CourseOffering courseOffering;
+	
 	private double salary;
 	
 	public Monitoring(Student student, CourseOffering courseOffering, double salary) {
