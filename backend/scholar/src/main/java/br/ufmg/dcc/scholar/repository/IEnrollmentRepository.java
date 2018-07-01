@@ -8,7 +8,7 @@ import br.ufmg.dcc.scholar.domain.CourseOffering;
 import br.ufmg.dcc.scholar.domain.Enrollment;
 import br.ufmg.dcc.scholar.domain.Student;
 
-public interface EnrollmentRepository extends JpaRepository<Enrollment, Long> {
+public interface IEnrollmentRepository extends JpaRepository<Enrollment, Long> {
 	
 	Enrollment findByStudentAndCourseOffering(Student student, CourseOffering courseOffering);
 	

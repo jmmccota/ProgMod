@@ -6,12 +6,12 @@ import org.springframework.stereotype.Component;
 
 import br.ufmg.dcc.scholar.domain.Course;
 import br.ufmg.dcc.scholar.domain.Professor;
-import br.ufmg.dcc.scholar.repository.CourseRepository;
-import br.ufmg.dcc.scholar.repository.ProfessorRepository;
+import br.ufmg.dcc.scholar.repository.ICourseRepository;
+import br.ufmg.dcc.scholar.repository.IProfessorRepository;
 @Component
 public class ProfessorService extends BaseService<Professor> {
 	@Autowired
-	private ProfessorRepository service;
+	private IProfessorRepository service;
 
 	@Override
 	protected JpaRepository<Professor, Long> getEntityRepository() {

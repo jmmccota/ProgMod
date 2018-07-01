@@ -7,7 +7,7 @@ import org.springframework.data.repository.cdi.Eager;
 import br.ufmg.dcc.scholar.domain.Semester;
 
 @Eager
-public interface SemesterRepository extends JpaRepository<Semester, Long> {
+public interface ISemesterRepository extends JpaRepository<Semester, Long> {
 
     Collection<Semester> findByYear(Integer year);
 

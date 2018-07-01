@@ -10,7 +10,7 @@ import org.springframework.data.repository.cdi.Eager;
 import java.util.Collection;
 
 @Eager
-public interface CourseOfferingRepository extends JpaRepository<CourseOffering, Long> {
+public interface ICourseOfferingRepository extends JpaRepository<CourseOffering, Long> {
 
     Collection<CourseOffering> findBySemester(Semester semester);
 

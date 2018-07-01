@@ -7,7 +7,7 @@ import org.springframework.data.repository.cdi.Eager;
 
 import br.ufmg.dcc.scholar.domain.Professor;
 @Eager
-public interface ProfessorRepository extends JpaRepository<Professor, Long> {
+public interface IProfessorRepository extends JpaRepository<Professor, Long> {
 
     Collection<Professor> findByFirstName(String firstName);
 

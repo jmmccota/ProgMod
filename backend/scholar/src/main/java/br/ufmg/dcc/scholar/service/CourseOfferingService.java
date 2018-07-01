@@ -11,13 +11,13 @@ import br.ufmg.dcc.scholar.domain.Course;
 import br.ufmg.dcc.scholar.domain.CourseOffering;
 import br.ufmg.dcc.scholar.domain.Professor;
 import br.ufmg.dcc.scholar.domain.Semester;
-import br.ufmg.dcc.scholar.repository.CourseOfferingRepository;
+import br.ufmg.dcc.scholar.repository.ICourseOfferingRepository;
 
 @Component
 public class CourseOfferingService extends BaseService<CourseOffering> {
 
 	@Autowired
-	private CourseOfferingRepository courseOfferingRepository;
+	private ICourseOfferingRepository courseOfferingRepository;
 	
 	@Override
 	protected JpaRepository<CourseOffering, Long> getEntityRepository() {

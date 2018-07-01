@@ -4,5 +4,5 @@ public interface IResearcher {
 	
 	public void setExpertiseArea(String expertiseArea);
 	
-	public String retrieveExpertiseArea();
+	public String getExpertiseArea();
 }

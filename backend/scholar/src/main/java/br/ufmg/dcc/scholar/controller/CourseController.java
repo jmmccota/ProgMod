@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 import br.ufmg.dcc.scholar.domain.Course;
 import br.ufmg.dcc.scholar.domain.Professor;
 import br.ufmg.dcc.scholar.domain.Student;
-import br.ufmg.dcc.scholar.repository.CourseRepository;
+import br.ufmg.dcc.scholar.repository.ICourseRepository;
 import br.ufmg.dcc.scholar.service.CourseService;
 
 @RestController

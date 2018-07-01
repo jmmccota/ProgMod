@@ -16,18 +16,20 @@ public class Professor extends BaseEntity implements IEmployee, IResearcher {
     
     private double salary;
     
-    private String expertiseArea;    
-
 	@OneToMany
 	private List<Course> courseResponsibility;
+
+	private String cpf;
+
+	private String expertiseArea;
     
 	public Professor() { }
 
-    public Professor(Long id, String firstName, String lastName, String expertiseArea) {
+    public Professor(Long id, String firstName, String lastName, String cpf) {
         super.setId(id);
         this.firstName = firstName;
         this.lastName = lastName;
-        this.expertiseArea = expertiseArea;
+        this.setCpf(cpf);
     }
 
     public String getFirstName() {
@@ -45,14 +47,14 @@ public class Professor extends BaseEntity implements IEmployee, IResearcher {
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
-    
+
 	@Override
-	public double retrieveSalary() {
+	public double getSalary() {		
 		return salary;
 	}
 
 	@Override
-	public void updateSalary(double salary) {
+	public void setSalary(double salary) {
 		this.salary = salary;
 	}
 
@@ -60,33 +62,17 @@ public class Professor extends BaseEntity implements IEmployee, IResearcher {
 	public void setExpertiseArea(String expertiseArea) {
 		this.expertiseArea = expertiseArea;
 	}
-	
-	@Override
-	public String retrieveExpertiseArea() {
-		return this.expertiseArea;
-	}
 
 	@Override
-	public void insertCourseResponsibility(Course course) {
-		/*if(this.courseResponsibility.size() < 2) {
-			this.courseResponsibility.add(course);
-		}
-		else {
-			// TODO Criar exceção
-			System.out.println("Numero de cursos excedidos para o professor");
-		}*/
-		
+	public String getExpertiseArea() {
+		return expertiseArea;
 	}
 
-	@Override
-	public void deleteCourseResponsibility(Course course) {
-		/*if(this.courseResponsibility.contains(course)) {
-			this.courseResponsibility.remove(course);
-		}*/
+	public String getCpf() {
+		return cpf;
 	}
 
-	public List<Course> retrieveCoursesResponsability() {
-		//return courseResponsibility;
-		return null;
+	public void setCpf(String cpf) {
+		this.cpf = cpf;
 	}
 }

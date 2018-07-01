@@ -8,7 +8,7 @@ import org.springframework.data.repository.cdi.Eager;
 import br.ufmg.dcc.scholar.domain.Course;
 
 @Eager
-public interface CourseRepository extends JpaRepository<Course, Long> {
+public interface ICourseRepository extends JpaRepository<Course, Long> {
 
     Collection<Course> findByName(String name);
 

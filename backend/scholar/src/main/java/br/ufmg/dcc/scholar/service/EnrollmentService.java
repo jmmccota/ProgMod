@@ -9,13 +9,13 @@ import org.springframework.stereotype.Component;
 import br.ufmg.dcc.scholar.domain.CourseOffering;
 import br.ufmg.dcc.scholar.domain.Enrollment;
 import br.ufmg.dcc.scholar.domain.Student;
-import br.ufmg.dcc.scholar.repository.EnrollmentRepository;
+import br.ufmg.dcc.scholar.repository.IEnrollmentRepository;
 
 @Component
 public class EnrollmentService extends BaseService<Enrollment> {
 
 	@Autowired
-	private EnrollmentRepository enrollmentRepository;
+	private IEnrollmentRepository enrollmentRepository;
 	
 	@Override
 	protected JpaRepository<Enrollment, Long> getEntityRepository() {
