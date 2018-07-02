@@ -23,7 +23,7 @@ export default class ProfessorList extends React.Component {
       });
   }
   excluir = (val) => {
-    return axios.delete('/professors/'+ val)
+    return axios.delete('/professors/' + val)
       .then(() => {
         this.carregar();
       });
@@ -51,6 +51,19 @@ export default class ProfessorList extends React.Component {
       text: 'Sobrenome',
       filter: textFilter()
     }, {
+      dataField: 'expertiseArea',
+      text: 'Área de Expertise',
+      filter: textFilter()
+    }, {
+      dataField: 'salary',
+      text: 'Salário',
+      filter: textFilter()
+    }, {
+      dataField: 'cpf',
+      text: 'CPF',
+      filter: textFilter()
+    },
+    {
       dataField: 'id',
       text: 'Ações',
       formatter: this.formatAcoes,

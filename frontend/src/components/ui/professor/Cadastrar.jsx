@@ -6,6 +6,7 @@ import { withRouter } from 'react-router-dom';
 import { reduxForm } from 'redux-form';
 import { TextFieldRedux } from '../../config/fields/TextFieldRedux';
 import { normalizarCPF } from '../../config/normalization/CPFCNPJNormalize';
+import { normalizarDinheiro } from '../../config/normalization/CurrencyNormalize';
 
 class CadastrarComponent extends React.Component {
 
@@ -17,6 +18,10 @@ class CadastrarComponent extends React.Component {
   }
 
   salvar = (values) => {
+    values.salary = values.salary.slice(3, values.salary.length);
+    values.salary = values.salary.replace(".", "");
+    values.salary = values.salary.replace(",", ".");
+    console.log(values.salary);
     return axios
       .post('/professors/salvar', values)
       .then(({ data }) => {
@@ -44,8 +49,16 @@ class CadastrarComponent extends React.Component {
                   <Col xs={12} md={6}>
                     <TextFieldRedux name="lastName" label="Digite o sobrenome" style={{ width: "100%" }} />
                   </Col>
-                  <Col xs={12} md={6}>
+                </Row>
+                <Row>
+                  <Col xs={12} md={4}>
+                    <TextFieldRedux name="expertiseArea" label="Digite a área de expertise" style={{ width: "100%" }} />
+                  </Col>
+                  <Col xs={12} md={4}>
                     <TextFieldRedux name="cpf" label="Digite o cpf" style={{ width: "100%" }} normalize={normalizarCPF} />
+                  </Col>
+                  <Col xs={12} md={4}>
+                    <TextFieldRedux name="salary" label="Digite o salário" style={{ width: "100%" }} normalize={normalizarDinheiro} />
                   </Col>
                 </Row>
               </Grid>
