@@ -14,11 +14,11 @@ export const normalizarDinheiro = (value, previousValue) => {
         return `R$ ${onlyNums.slice(0, 3)}.${onlyNums.slice(3, 6)}.${onlyNums.slice(6, 9)},${onlyNums.slice(9, 11)}`;
     }
 
-    if (onlyNums.length == 1) {
+    if (onlyNums.length === 1) {
         return `R$ 0,0` + onlyNums;
     }
 
-    if (onlyNums.length == 2) {
+    if (onlyNums.length === 2) {
         return `R$ 0,` + onlyNums;
     }
 
