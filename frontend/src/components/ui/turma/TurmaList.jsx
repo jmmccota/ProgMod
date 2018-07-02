@@ -7,7 +7,7 @@ import { Cadastrar } from './Cadastrar';
 import DeleteIcon from '@material-ui/icons/Delete';
 
 
-export default class SemestreList extends React.Component {
+export default class TurmaList extends React.Component {
   constructor(props) {
     super(props);
     this.state = {

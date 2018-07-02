@@ -34,8 +34,8 @@ export const Menu = (props) =>
         <ListItem component={Link} to="/semestre">
           <ListItemText primary="Semestre" />
         </ListItem>
-        <ListItem component={Link} to="/curso">
-          <ListItemText primary="Cursos" />
+        <ListItem component={Link} to="/turma">
+          <ListItemText primary="Curso" />
         </ListItem>
       </List>
       <Divider />
