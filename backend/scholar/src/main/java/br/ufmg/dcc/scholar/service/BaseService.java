@@ -11,6 +11,7 @@ import javax.ejb.TransactionAttribute;
 import javax.ejb.TransactionAttributeType;
 import javax.transaction.Transactional;
 import java.util.Collection;
+import java.util.Optional;
 
 /**
  * 
@@ -46,7 +47,7 @@ public abstract class BaseService<E>
    */
   public E findOne(Long id)
   {
-    return this.getEntityRepository().findById(id).get();
+    return this.getEntityRepository().findById(id).orElse(null);
   }
 
   /**

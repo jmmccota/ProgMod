@@ -61,7 +61,7 @@ public class CourseOfferingController {
     
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public CourseOffering salvar(@PathVariable long semester, @RequestParam long course, @RequestParam long professor) {
+    public CourseOffering salvar(@RequestParam long semester, @RequestParam long course, @RequestParam long professor) {
 		Semester semesterEntity = this.semesterService.findOne(semester);
     	Course courseEntity = this.courseService.findOne(course);
     	Professor professorEntity = this.professorService.findOne(professor);
