@@ -13,17 +13,35 @@ export default class TurmaList extends React.Component {
     super(props);
     this.state = {
       data: [],
+      alunos: [],
+      value: 3,
       open: false,
       modalData: undefined,
     }
     this.carregar();
   }
   carregar = () => {
+    axios
+      .get('/students/obterTodos')
+      .then(({ data }) =>
+        this.setState({
+          alunos: data.map(d => ({
+            id: d.id,
+            text: `${d.firstName} ${d.lastName}`,
+          }))
+        })
+      );
+
+    if (this.state.alunos.length > 0) {
+      console.log(this.state.value);
+      this.setState({ value: this.state.alunos.first.id });
+    }
     return axios
       .get('/offerings/obterTodos')
       .then(({ data }) => {
         this.setState({ data });
       });
+
   }
   excluir = (val) => {
     return axios.delete('/offerings/' + val)
@@ -52,9 +70,12 @@ export default class TurmaList extends React.Component {
   }
 
   handleToggleModal = (cell, row) => {
+    console.log(this.state.alunos);
     this.setState({
       open: !this.state.open,
-      modalData: this.state.data.find(d => d.id === cell)
+      modalData: this.state.data.find(d => d.id === cell),
+      alunosData: this.state.alunos,
+      valueFirst: this.state.value
     });
   };
 
@@ -66,9 +87,9 @@ export default class TurmaList extends React.Component {
         <Button variant="fab" aria-label="delete" onClick={() => this.excluir(cell)}>
           <DeleteIcon />
         </Button>
-        <Button variant="fab" aria-label="edit" onClick={() => this.handleToggleModal(cell)}>
+        {/* <Button variant="fab" aria-label="edit" onClick={() => this.handleToggleModal(cell)}>
           <GroupIcon />
-        </Button>
+        </Button> */}
       </div>
     );
   }
@@ -119,6 +140,8 @@ export default class TurmaList extends React.Component {
         <ModalMonitor
           open={this.state.open}
           data={this.state.modalData}
+          alunos={this.state.alunos}
+          value={this.state.value}
           handleToggle={this.handleToggleModal}
         />
       </div>
