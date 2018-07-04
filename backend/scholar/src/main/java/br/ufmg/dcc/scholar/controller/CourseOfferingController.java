@@ -87,6 +87,11 @@ public class CourseOfferingController {
     	if(professorEntity == null) {
     		throw new IllegalArgumentException("Professor não existe");
     	}
+    	int tam = this.courseOfferingService.findBySemesterAndProfessor(semesterEntity, professorEntity).size();
+    	
+    	if(tam >= 2){
+    		throw new IllegalArgumentException("Professor ja vinculado a dois cursos nesse semestre");
+    	}
     	
     	CourseOffering courseOffering = new CourseOffering(semesterEntity, courseEntity, professorEntity);
     	return this.courseOfferingService.save(courseOffering);

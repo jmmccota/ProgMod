@@ -1,5 +1,7 @@
 package br.ufmg.dcc.scholar.service;
 
+import java.util.Collection;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.Page;
@@ -27,6 +29,11 @@ public class CourseOfferingService extends BaseService<CourseOffering> {
 	public CourseOffering findByCourseAndSemesterAndProfessor(Course course, Semester semester, Professor professor) {
 		return courseOfferingRepository.findByCourseAndSemesterAndProfessor(course, semester, professor);
 	}
+	
+	public Collection<CourseOffering> findBySemesterAndProfessor(Semester semester, Professor professor) {
+		return courseOfferingRepository.findBySemesterAndProfessor(semester, professor);
+	}
+	
 	
 	public Page<CourseOffering> findBySemester(Semester semester, Pageable pageable){
 		return courseOfferingRepository.findBySemester(semester, pageable);

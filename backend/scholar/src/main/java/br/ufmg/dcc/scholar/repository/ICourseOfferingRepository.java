@@ -18,6 +18,8 @@ public interface ICourseOfferingRepository extends JpaRepository<CourseOffering,
     
     CourseOffering findByCourseAndSemesterAndProfessor(Course course, Semester semester, Professor professor);
     
+    Collection<CourseOffering> findBySemesterAndProfessor(Semester semester, Professor professor);
+    
     Page<CourseOffering> findBySemester(Semester semester, Pageable pageable);
 
 }
