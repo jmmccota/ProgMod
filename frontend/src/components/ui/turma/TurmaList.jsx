@@ -40,20 +40,20 @@ export default class TurmaList extends React.Component {
   render() {
     const columns = [{
       dataField: 'id',
-      text: 'Código do semestre',
+      text: 'Código do Curso',
       sort: true,
     }, {
-      dataField: 'year',
-      text: 'Ano',
+      dataField: 'course',
+      text: 'Disciplina',
       filter: textFilter()
     }, {
       dataField: 'semester',
       text: 'Semestre',
       filter: textFilter()
     }, {
-      dataField: 'id',
-      text: 'Ações',
-      formatter: this.formatAcoes,
+      dataField: 'professor',
+      text: 'Professor',
+      filter: textFilter()
     }];
     return (
       <div>
