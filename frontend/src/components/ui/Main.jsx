@@ -7,7 +7,7 @@ export default class Main extends React.Component {
     return (
       <Paper>
         <Typography variant="headline" component="h1">
-        Projeto de Programação modular
+        Sistema Acadêmico
         </Typography>
         <Typography component="p">
         Projeto de programação modular
