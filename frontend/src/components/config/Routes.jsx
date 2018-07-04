@@ -16,6 +16,7 @@ import AlunoList from '../ui/aluno/AlunoList';
 import DisciplinaList from '../ui/disciplina/DisciplinaList';
 import SemestreList from '../ui/semestre/SemestreList';
 import TurmaList from '../ui/turma/TurmaList';
+import AlunoTurmaList from '../ui/alunoTurma/AlunoTurmaList';
 
 injectTapEventPlugin();
 
@@ -40,6 +41,7 @@ const Routes = () => (
             <Route path="/professor" render={renderLayout(ProfessorList)} />
             <Route path="/aluno" render={renderLayout(AlunoList)} />
             <Route path="/disciplina" render={renderLayout(DisciplinaList)} />
+            <Route path="/courseOffering" render={renderLayout(AlunoTurmaList)} />
             <Route path="/semestre" render={renderLayout(SemestreList)} />
             <Route path="/turma" render={renderLayout(TurmaList)} />
             <Route path="/dashboard" render={renderLayout(NotFound)} />{/* Rota para painel geral */}
