@@ -74,12 +74,6 @@ class CadastrarComponent extends React.Component {
     const { handleSubmit, pristine, reset, submitting } = this.props;
     const { semestres, courses, professors } = this.state;
 
-
-
-    console.log(professors);
-    console.log(courses);
-    console.log(semestres);
-
     return (
       <div>
         <form onSubmit={handleSubmit(this.preventEnter)}>

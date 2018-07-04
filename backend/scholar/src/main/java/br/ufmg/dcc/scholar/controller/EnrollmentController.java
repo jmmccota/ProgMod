@@ -65,8 +65,8 @@ public class EnrollmentController {
 	public Collection<Enrollment> getAll() {		
 		return this.enrollmentService.findAll();
 	}
-	
-	@PostMapping
+
+	@PostMapping("/salvar")
 	@ResponseStatus(HttpStatus.CREATED)
 	public Enrollment save(@RequestBody FormEnrollment form) {
 		Student studentEntity = studentService.findOne(form.getStudent());

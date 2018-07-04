@@ -50,7 +50,7 @@ class CadastrarComponent extends React.Component {
 
   salvar = (values) => {
     return axios
-      .post('/enrollments', values)
+      .post('/enrollments/salvar', values)
       .then(({ data }) => {
         this.setState({ busca: data });
         this.props.callbackCarregar &&
