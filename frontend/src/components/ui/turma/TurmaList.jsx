@@ -108,7 +108,6 @@ export default class TurmaList extends React.Component {
             </CardContent>
           </Card>
         </Grid >
-        <ModalMonitor id="teste"></ModalMonitor>
       </div>
     );
   }
