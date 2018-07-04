@@ -8,43 +8,34 @@ import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import withMobileDialog from '@material-ui/core/withMobileDialog';
 
-class ResponsiveDialog extends React.Component {
-  state = {
-    open: false,
-  };
-
-  handleClickOpen = () => {
-    this.setState({ open: true });
-  };
-
-  handleClose = () => {
-    this.setState({ open: false });
-  };
-
+class ModalMonitor extends React.Component {
   render() {
-    const { fullScreen } = this.props;
-
+    const { fullScreen, data } = this.props;    
     return (
       <div>
-        <Button onClick={this.handleClickOpen}>Open responsive dialog</Button>
         <Dialog
           fullScreen={fullScreen}
-          open={this.state.open}
-          onClose={this.handleClose}
+          open={this.props.open}
+          onClose={() => this.props.handleToggle(data.id)}
+          scroll="paper"
+          maxWidth="md"
           aria-labelledby="responsive-dialog-title"
         >
           <DialogTitle id="responsive-dialog-title">{"Use Google's location service?"}</DialogTitle>
           <DialogContent>
             <DialogContentText>
-              Let Google help apps determine location. This means sending anonymous location data to
-              Google, even when no apps are running.
+              <pre>
+                <code>
+                  {JSON.stringify(data, undefined, 2)}
+                </code>
+              </pre>
             </DialogContentText>
           </DialogContent>
           <DialogActions>
-            <Button onClick={this.handleClose} color="primary">
+            <Button onClick={() => this.props.handleToggle(data.id)} color="primary">
               Disagree
             </Button>
-            <Button onClick={this.handleClose} color="primary" autoFocus>
+            <Button onClick={() => this.props.handleToggle(data.id)} color="primary" autoFocus>
               Agree
             </Button>
           </DialogActions>
@@ -54,8 +45,8 @@ class ResponsiveDialog extends React.Component {
   }
 }
 
-ResponsiveDialog.propTypes = {
+ModalMonitor.propTypes = {
   fullScreen: PropTypes.bool.isRequired,
 };
 
-export default withMobileDialog()(ResponsiveDialog);
+export default withMobileDialog()(ModalMonitor);
