@@ -23,7 +23,7 @@ export default class TurmaList extends React.Component {
       });
   }
   excluir = (val) => {
-    return axios.delete('/semesters/'+ val)
+    return axios.delete('/offerings/'+ val)
       .then(() => {
         this.carregar();
       });
@@ -54,6 +54,17 @@ export default class TurmaList extends React.Component {
     return (
       `${cell.firstName} ${cell.lastName}`
     );
+    
+  }
+  
+  formatAcoes = (cell, row) => {
+    return (
+      <div>
+        <Button variant="fab" aria-label="delete" onClick={() => this.excluir(cell)}>
+          <DeleteIcon />
+        </Button>
+      </div>
+    );
   }
 
   render() {
@@ -76,6 +87,10 @@ export default class TurmaList extends React.Component {
       text: 'Professor',
       filter: textFilter(),
       formatter: this.formatProfessor,
+    }, {
+      dataField: 'id',
+      text: 'Ações',
+      formatter: this.formatAcoes,
     }];
     return (
       <div>
