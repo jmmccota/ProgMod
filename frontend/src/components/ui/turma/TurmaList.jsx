@@ -5,6 +5,7 @@ import { Card, CardContent, Grid, Divider, Button } from '@material-ui/core';
 import Tabela from '../utils/Tabela';
 import { Cadastrar } from './Cadastrar';
 import DeleteIcon from '@material-ui/icons/Delete';
+import EditIcon from '@material-ui/icons/Edit';
 
 
 export default class TurmaList extends React.Component {
@@ -27,15 +28,6 @@ export default class TurmaList extends React.Component {
       .then(() => {
         this.carregar();
       });
-  }
-  formatAcoes = (cell, row) => {
-    return (
-      <div>
-        <Button variant="fab" aria-label="delete" onClick={() => this.excluir(cell)}>
-          <DeleteIcon />
-        </Button>
-      </div>
-    );
   }
 
   formatCourse = (cell, row) => {
@@ -62,6 +54,9 @@ export default class TurmaList extends React.Component {
       <div>
         <Button variant="fab" aria-label="delete" onClick={() => this.excluir(cell)}>
           <DeleteIcon />
+        </Button>
+        <Button variant="fab" aria-label="edit" onClick={() => this.excluir(cell)}>
+          <EditIcon />
         </Button>
       </div>
     );
