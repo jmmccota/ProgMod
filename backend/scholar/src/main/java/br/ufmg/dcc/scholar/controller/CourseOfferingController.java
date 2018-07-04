@@ -1,5 +1,8 @@
 package br.ufmg.dcc.scholar.controller;
 
+import java.util.Collection;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -8,6 +11,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -59,12 +63,18 @@ public class CourseOfferingController {
     	return this.courseOfferingService.findBySemester(semesterEntity, PageRequest.of(page, size));
     }
     
+    @GetMapping("/obterTodos")
+	@ResponseStatus(HttpStatus.OK)
+    public Collection<CourseOffering> getAll() {
+    	return this.courseOfferingService.findAll();
+    }
+    
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public CourseOffering salvar(@RequestParam long semester, @RequestParam long course, @RequestParam long professor) {
-		Semester semesterEntity = this.semesterService.findOne(semester);
-    	Course courseEntity = this.courseService.findOne(course);
-    	Professor professorEntity = this.professorService.findOne(professor);
+    public CourseOffering salvar(@RequestBody FormCourseOffering form) {
+		Semester semesterEntity = this.semesterService.findOne(form.getSemester());
+    	Course courseEntity = this.courseService.findOne(form.getCourse());
+    	Professor professorEntity = this.professorService.findOne(form.getProfessor());
     	
     	if(semesterEntity == null) {
     		throw new IllegalArgumentException("Semestre não existe");
@@ -94,5 +104,30 @@ public class CourseOfferingController {
     	}
     	
     	this.courseOfferingService.delete(courseOfferingEntity);
+    }
+    
+    private static class FormCourseOffering {
+    	private Long semester;
+    	private Long course;
+    	private Long professor;
+		public Long getSemester() {
+			return semester;
+		}
+		public void setSemester(Long semester) {
+			this.semester = semester;
+		}
+		public Long getCourse() {
+			return course;
+		}
+		public void setCourse(Long course) {
+			this.course = course;
+		}
+		public Long getProfessor() {
+			return professor;
+		}
+		public void setProfessor(Long professor) {
+			this.professor = professor;
+		}
+    	
     }
 }

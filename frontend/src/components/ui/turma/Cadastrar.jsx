@@ -8,6 +8,51 @@ import { SelectivityRedux } from '../../config/fields/selectivity/SelectivityRed
 
 class CadastrarComponent extends React.Component {
 
+  constructor(props) {
+    super(props);
+    this.state = {
+      semestres: [],
+      courses: [],
+      professors: [],
+    }
+    this.carregar();
+  }
+
+  carregar = () => {
+    axios
+      .get('/semesters/obterTodos')
+      .then(({ data }) =>
+        this.setState({
+          semestres: data.map(d => ({
+            id: d.id,
+            text: `${d.year}/${d.semester}`,
+          }))
+        })
+      );
+
+    axios
+      .get('/courses/obterTodos')
+      .then(({ data }) =>
+        this.setState({
+          courses: data.map(d => ({
+            id: d.id,
+            text: d.name,
+          }))
+        })
+      );
+
+    axios
+      .get('/professors/obterTodos')
+      .then(({ data }) =>
+        this.setState({
+          professors: data.map(d => ({
+            id: d.id,
+            text: `${d.firstName} ${d.lastName}`,
+          }))
+        })
+      );
+  }
+
   preventEnter = (e) => {
     if (e.keyCode === 13 && e.shiftKey === false) {
       e.preventDefault();
@@ -27,44 +72,13 @@ class CadastrarComponent extends React.Component {
 
   render() {
     const { handleSubmit, pristine, reset, submitting } = this.props;
-    const semestres = [];
-    const courses = [];
-    const professors = [];
-
-    axios
-      .get('/semesters/obterTodos')
-      .then(({ data }) => {
-        data.forEach(
-          function addItem(objSemestre) {
-            semestres.push({ id: objSemestre.id, text: objSemestre.year + '/' + objSemestre.semester });
-          }
-        );
-      });
-
-    axios
-      .get('/courses/obterTodos')
-      .then(({ data }) => {
-        data.forEach(
-          function addItem(objCourse) {
-            courses.push({ id: objCourse.id, text: objCourse.name });
-          }
-        );
-      });
+    const { semestres, courses, professors } = this.state;
 
 
-    axios
-      .get('/professors/obterTodos')
-      .then(({ data }) => {
-        data.forEach(
-          function addItem(objProfessor) {
-            professors.push({ id: objProfessor.id, text: objProfessor.firstName + " " + objProfessor.lastName });
-          }
-        );
-      });
 
-      console.log(professors);
-      console.log(courses);
-      console.log(semestres);
+    console.log(professors);
+    console.log(courses);
+    console.log(semestres);
 
     return (
       <div>

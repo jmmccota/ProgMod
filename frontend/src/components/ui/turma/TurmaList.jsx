@@ -17,7 +17,7 @@ export default class TurmaList extends React.Component {
   }
   carregar = () => {
     return axios
-      .get('/semesters/obterTodos')
+      .get('/offerings/obterTodos')
       .then(({ data }) => {
         this.setState({ data });
       });
@@ -37,6 +37,25 @@ export default class TurmaList extends React.Component {
       </div>
     );
   }
+
+  formatCourse = (cell, row) => {
+    return (
+      `${cell.code} - ${cell.name}`
+    );
+  }
+
+  formatSemester = (cell, row) => {
+    return (
+      `${cell.semester}/${cell.year}`
+    );
+  }
+
+  formatProfessor = (cell, row) => {
+    return (
+      `${cell.firstName} ${cell.lastName}`
+    );
+  }
+
   render() {
     const columns = [{
       dataField: 'id',
@@ -45,15 +64,18 @@ export default class TurmaList extends React.Component {
     }, {
       dataField: 'course',
       text: 'Disciplina',
-      filter: textFilter()
+      filter: textFilter(),
+      formatter: this.formatCourse,
     }, {
       dataField: 'semester',
       text: 'Semestre',
-      filter: textFilter()
+      filter: textFilter(),
+      formatter: this.formatSemester,
     }, {
       dataField: 'professor',
       text: 'Professor',
-      filter: textFilter()
+      filter: textFilter(),
+      formatter: this.formatProfessor,
     }];
     return (
       <div>
