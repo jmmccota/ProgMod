@@ -30,6 +30,10 @@ public class CourseOfferingService extends BaseService<CourseOffering> {
 		return courseOfferingRepository.findByCourseAndSemesterAndProfessor(course, semester, professor);
 	}
 	
+	public CourseOffering findByCourseAndSemester(Course course, Semester semester) {
+		return courseOfferingRepository.findByCourseAndSemester(course, semester);
+	}
+	
 	public Collection<CourseOffering> findBySemesterAndProfessor(Semester semester, Professor professor) {
 		return courseOfferingRepository.findBySemesterAndProfessor(semester, professor);
 	}
